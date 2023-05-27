@@ -5,9 +5,10 @@ const { engine } = require("express-handlebars");
 const app = express();
 const port = 3000;
 
-// console.log(app);
+// use static images
+app.use(express.static(path.join(__dirname, "public")));
 
-// HTTP logged
+// HTTP logger
 app.use(morgan("combined"));
 
 // Template engine
@@ -20,7 +21,7 @@ app.engine(
 app.set("view engine", "hbs");
 // app.set("views", path.join(__dirname, "views"));
 app.set("views", path.join(__dirname, "resources/views"));
-// console.log(path.join(__dirname, "resources/views"));
+console.log(path.join(__dirname, "resources/views"));
 
 app.get("/", (req, res) => {
   res.render("home");
